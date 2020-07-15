@@ -31,7 +31,7 @@ AppCenter appCenter = new AppCenter("APIToken", "OwnerName");
 APIToken = Login to Appcenter->Account Settings->Use API Tokens->New API Token->Copy.
 OwnerName = URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and the {owner_name} would be Microsoft.
 
-e.g AppCenter appCenter = new AppCenter("xxxxxxxxxx", "Microsoft");
+e.g. AppCenter appCenter = new AppCenter("xxxxxxxxxx", "Microsoft");
 ```
 Use the created instance to call the available methods.e.g.
 ```
