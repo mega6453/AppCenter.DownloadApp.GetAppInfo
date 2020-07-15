@@ -33,8 +33,9 @@ OwnerName = URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and
 
 e.g. AppCenter appCenter = new AppCenter("xxxxxxxxxx", "Microsoft");
 ```
-Use the created instance to call the available methods.e.g.
+Use the created instance to call the available methods.
 ```
+e.g.
 appCenter.DownloadApplication(string AppName, string ReleaseID, string DownloadLocation, bool DeleteExistingApps);
 
 AppName = URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and the {AppName} would be APIExample.
