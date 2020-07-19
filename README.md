@@ -1,6 +1,6 @@
 # AppCenterDownloadAppGetAppInfo <img src="https://user-images.githubusercontent.com/50325649/87393929-8d216e00-c5cc-11ea-9493-d144245bb6a8.png" width="25" height="25" title="AppCenterDownload" alt="AppCenterDownload">
 
-Library to Download application and Get application information from Microsoft AppCenter.
+A simple and easy library to Download application and Get application information from Microsoft AppCenter.
 
 ### Prerequisites
 
