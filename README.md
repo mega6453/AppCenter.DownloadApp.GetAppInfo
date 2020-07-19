@@ -5,7 +5,7 @@ Library to Download application and Get application information from Microsoft A
 ### Prerequisites
 
 ```
-A .NetStandard v2.0/ .NETCore v2.0 / .NetFramework v4.6.1 project
+A .NetStandard v2.0 / .NetFramework v4.5.2 project
 
 Microsoft AppCenter Access
 ```
@@ -45,6 +45,10 @@ e.g. appCenter.DownloadApplication("APIExample", "latest", "c:\\users\\mega\\des
 This will download the application in to the specified location and will return the file path as string.
 ```
 ## Available Methods
+No much information added here about the methods since all the methods are having description and parameter info which will be displayed while using the methods.
+
+<img src="https://user-images.githubusercontent.com/50325649/87872324-0eb23b00-c9d5-11ea-8dac-2bcafb94cb3b.png" width="820" height="80" title="MethodDesc" alt="MethodDesc">
+
 ```
 DownloadApplication() (+ 1 overload)
 GetAllDeviceDetails()
