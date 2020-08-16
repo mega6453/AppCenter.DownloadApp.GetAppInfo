@@ -50,13 +50,13 @@ No much information added here about the methods since all the methods are havin
 <img src="https://user-images.githubusercontent.com/50325649/87872324-0eb23b00-c9d5-11ea-8dac-2bcafb94cb3b.png" width="820" height="80" title="MethodDesc" alt="MethodDesc">
 
 ```
-DownloadApplication() (+ 1 overload)
+DownloadApplication() (+ 3 overloads)
 GetAllDeviceDetails()
 GetAllReleasesInformation()
-GetApplicationBuildVersion()
+GetApplicationBuildNumber()
 GetApplicationBundleID()
+GetApplicationDisplayName()
 GetApplicationFullVersion()
-GetApplicationName()
 GetApplicationShortVersion()
 GetApplicationSize()
 GetApplicationSupportedOS()
@@ -65,6 +65,7 @@ GetiOSProvisioningProfileInformation()
 GetLatestReleaseID()
 GetMinimumOSVersionSupportedByApplication()
 GetRecentReleasesInformation()
+GetReleaseID() (+ 1 overload)
 ```
 More methods will be added in the future releases.
 
