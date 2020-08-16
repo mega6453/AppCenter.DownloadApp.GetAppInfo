@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AppCenter.DownloadApp.GetAppInfo</id>
+    <version>1.0.0</version>
+    <authors>Meganathan</authors>
+    <owners>Meganathan</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>    
+    <icon>AppCenterIcon.png</icon>
+    <iconUrl>https://user-images.githubusercontent.com/50325649/87393929-8d216e00-c5cc-11ea-9493-d144245bb6a8.png</iconUrl>
+    <title>AppCenter Download App and Get App Info</title>    
+    <description>Library to Download application and Get application information from Microsoft AppCenter.</description>
+    <releaseNotes>Initial Release - Download application and Get application information</releaseNotes>
+    <copyright>Copyright © Meganathan 2020</copyright>
+    <tags>appcenter,appdownload,appcenterdownload,distribute,getapplicationinfo,getappinfo,microsoft,application</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.11.4" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.11.4" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="AppCenterIcon.png" target="\AppCenterIcon.png"/>
+      <file src="C:\Users\mc\source\repos\My Libraries\AppCenterDownloadAppGetAppInfo\AppCenterDownloadAppGetAppInfo\bin\Release\net452\AppCenterDownloadAppGetAppInfo.dll" target="lib\net452\AppCenterDownloadAppGetAppInfo.dll" />
+    <file src="C:\Users\mc\source\repos\My Libraries\AppCenterDownloadAppGetAppInfo\AppCenterDownloadAppGetAppInfo\bin\Release\net452\AppCenterDownloadAppGetAppInfo.xml" target="lib\net452\AppCenterDownloadAppGetAppInfo.xml" />
+    <file src="C:\Users\mc\source\repos\My Libraries\AppCenterDownloadAppGetAppInfo\AppCenterDownloadAppGetAppInfo\bin\Release\netstandard2.0\AppCenterDownloadAppGetAppInfo.dll" target="lib\netstandard2.0\AppCenterDownloadAppGetAppInfo.dll" />
+    <file src="C:\Users\mc\source\repos\My Libraries\AppCenterDownloadAppGetAppInfo\AppCenterDownloadAppGetAppInfo\bin\Release\netstandard2.0\AppCenterDownloadAppGetAppInfo.xml" target="lib\netstandard2.0\AppCenterDownloadAppGetAppInfo.xml" />
+  </files>
+</package>
