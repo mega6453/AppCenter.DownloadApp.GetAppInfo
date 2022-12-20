@@ -616,7 +616,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
-            for (int i = count - 1; i > 0; i--)
+            for (int i = count - 1; i >= 0; i--)
             {
                 internalVersion = (string)textArray[i]["version"];
                 if (internalVersion.Equals(BuildNumber, StringComparison.InvariantCultureIgnoreCase))
@@ -661,7 +661,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
-            for (int i = count - 1; i > 0; i--)
+            for (int i = count - 1; i >= 0; i--)
             {
                 internalShortVersion = (string)textArray[i]["short_version"];
                 internalVersion = (string)textArray[i]["version"];
@@ -682,6 +682,91 @@ namespace AppCenterDownloadAppGetAppInfo
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
                     Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the ShortVersion " + ShortVersion + ", Build Number " + BuildNumber + ". Returning the latest release " + ReleaseID + ".");
+                }
+                return ReleaseID;
+            }
+        }
+
+        /// <summary>
+        /// Returns the Release ID of an application for the given short version or version.
+        /// </summary>
+        /// <param name="AppName">URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and the {app_name} would be APIExample</param>
+        /// <param name="Version">Login to Appcenter->Select an app->See all releases->"Version" column-> Text within the braces () e.g If Version is 1.2(567), the {short_version} would be 1.2 and the {version} would be 567</param>
+        /// <param name="Type">Select short_version for Main version, version for Build number</param>
+        public int GetReleaseID(string AppName, string Version, VersionType Type)
+        {
+            AppName = AppName.Trim();
+            Version = Version.Trim();
+            string response = GetAllReleasesInformation(AppName);
+            JArray textArray = JArray.Parse(response);
+            int count = textArray.Count;
+            string internalVersion = null;
+            int ReleaseID = -1;
+            int NoOfReleasesWithSameVersion = 0;
+            string MultipleReleases = null;
+            for (int i = count - 1; i >= 0; i--)
+            {
+                internalVersion = (string)textArray[i][Type.ToString()];
+                if (internalVersion.Equals(Version, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ReleaseID = (int)textArray[i]["id"];
+                    NoOfReleasesWithSameVersion++;
+                    MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                }
+            }
+            if (ReleaseID == -1)
+            {
+                throw new Exception("\n\nNo release found with the " + Type.ToString() + " : " + Version);
+            }
+            else
+            {
+                if (NoOfReleasesWithSameVersion != 1)
+                {
+                    MultipleReleases = MultipleReleases.TrimStart(' ', ',');
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " " + Version + ". Returning the latest release " + ReleaseID + ".");
+                }
+                return ReleaseID;
+            }
+        }
+
+        /// <summary>
+        /// Returns the Release ID of an application for the given type of version and contains condition.
+        /// </summary>
+        /// <param name="AppName">URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and the {app_name} would be APIExample</param>
+        /// <param name="Type">Select short_version for Main version, version for Build number</param>
+        /// <param name="Contains">Enter a text which you want to search in the ShortVersion or Version</param>
+        public int GetReleaseIDByContains(string AppName, VersionType Type, string Contains)
+        {
+            AppName = AppName.Trim();
+            string internalVersionType = Type.ToString();
+            string ExpectedText = Contains.Trim().ToLower();
+            string response = GetAllReleasesInformation(AppName);
+            JArray textArray = JArray.Parse(response);
+            int count = textArray.Count;
+            string internalVersion = null;
+            int ReleaseID = -1;
+            int NoOfReleasesWithSameVersion = 0;
+            string MultipleReleases = null;
+            for (int i = count - 1; i >= 0; i--)
+            {
+                internalVersion = (string)textArray[i][internalVersionType];
+                if (internalVersion.ToLower().Contains(ExpectedText))
+                {
+                    ReleaseID = (int)textArray[i]["id"];
+                    NoOfReleasesWithSameVersion++;
+                    MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                }
+            }
+            if (ReleaseID == -1)
+            {
+                throw new Exception("\n\nNo release found with the " + Type.ToString() + " contains " + Contains);
+            }
+            else
+            {
+                if (NoOfReleasesWithSameVersion != 1)
+                {
+                    MultipleReleases = MultipleReleases.TrimStart(' ', ',');
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " " + Contains + ". Returning the latest release " + ReleaseID + ".");
                 }
                 return ReleaseID;
             }
@@ -826,5 +911,20 @@ namespace AppCenterDownloadAppGetAppInfo
         /// Returns only Registered At DateTime of the Device
         /// </summary>
         registered_at = 9
+    }
+
+    /// <summary>
+    /// Version Type
+    /// </summary>
+    public enum VersionType
+    {
+        /// <summary>
+        /// Main version of the application
+        /// </summary>
+        short_version = 0,
+        /// <summary>
+        /// Build number of the application
+        /// </summary>
+        version = 1
     }
 }

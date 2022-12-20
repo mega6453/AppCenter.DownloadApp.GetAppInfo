@@ -1,15 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
     <Configurations>Release</Configurations>
     <Authors>Meganathan</Authors>
     <Product>AppCenter Download App and Get App Info</Product>
     <Description>Library to Download application and Get application information from Microsoft AppCenter.</Description>
-    <PackageReleaseNotes>Initial Release - Download application and Get application information</PackageReleaseNotes>
+    <PackageReleaseNotes>Download application and Get application information</PackageReleaseNotes>
     <PackageTags>appcenter,appdownload,appcenterdownload,distribute,getapplicationinfo,getappinfo,microsoft,application</PackageTags>
-    <Copyright>Copyright © Meganathan 2020</Copyright>
+    <Copyright>Copyright © Meganathan 2022</Copyright>
     <PackageIconUrl>https://user-images.githubusercontent.com/50325649/87393929-8d216e00-c5cc-11ea-9493-d144245bb6a8.png</PackageIconUrl>
+    <Title>AppCenter Download App and Get App Info</Title>
+    <Version>1.1.0</Version>
+    <PackageProjectUrl>https://github.com/mega6453/AppCenter.DownloadApp.GetAppInfo</PackageProjectUrl>
+    <PackageIcon>AppCenterIcon.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>AppCenter.DownloadApp.GetAppInfo</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
@@ -18,20 +25,44 @@
     <DebugSymbols>false</DebugSymbols>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>bin\Release\AppCenterDownloadAppGetAppInfo.xml</DocumentationFile>
+    <Optimize>True</Optimize>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net452|AnyCPU'">
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
     <DefineConstants />
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>bin\Release\AppCenterDownloadAppGetAppInfo.xml</DocumentationFile>
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net472|AnyCPU'">
+    <DefineConstants />
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>bin\Release\AppCenterDownloadAppGetAppInfo.xml</DocumentationFile>
+    <Optimize>True</Optimize>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="RestSharp" Version="106.11.4" />
+    <None Include="AppCenterIcon.png" Pack="true" PackagePath="" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="AppCenterIcon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
