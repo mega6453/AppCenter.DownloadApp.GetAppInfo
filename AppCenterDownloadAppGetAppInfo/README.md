@@ -67,6 +67,7 @@ GetMinimumOSVersionSupportedByApplication()
 GetRecentReleasesInformation()
 GetReleaseID() (+ 2 overloads)
 GetReleaseIDByContains()
+GetReleaseIDByNotContains()
 ```
 More methods will be added in the future releases.
 

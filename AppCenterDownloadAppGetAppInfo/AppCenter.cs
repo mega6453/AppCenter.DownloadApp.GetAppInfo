@@ -766,12 +766,54 @@ namespace AppCenterDownloadAppGetAppInfo
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " " + Contains + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " contains " + Contains + ". Returning the latest release " + ReleaseID + ".");
                 }
                 return ReleaseID;
             }
         }
 
+        /// <summary>
+        /// Returns the Release ID of an application for the given type of version and Not contains condition.
+        /// </summary>
+        /// <param name="AppName">URL might be https://appcenter.ms/orgs/Microsoft/apps/APIExample and the {app_name} would be APIExample</param>
+        /// <param name="Type">Select short_version for Main version, version for Build number</param>
+        /// <param name="NotContains">Enter a text which you want to search in the ShortVersion or Version</param>
+        public int GetReleaseIDByNotContains(string AppName, VersionType Type, string NotContains)
+        {
+            AppName = AppName.Trim();
+            string internalVersionType = Type.ToString();
+            string ExpectedText = NotContains.Trim().ToLower();
+            string response = GetAllReleasesInformation(AppName);
+            JArray textArray = JArray.Parse(response);
+            int count = textArray.Count;
+            string internalVersion = null;
+            int ReleaseID = -1;
+            int NoOfReleasesWithSameVersion = 0;
+            string MultipleReleases = null;
+            for (int i = count - 1; i >= 0; i--)
+            {
+                internalVersion = (string)textArray[i][internalVersionType];
+                if (!internalVersion.ToLower().Contains(ExpectedText))
+                {
+                    ReleaseID = (int)textArray[i]["id"];
+                    NoOfReleasesWithSameVersion++;
+                    MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                }
+            }
+            if (ReleaseID == -1)
+            {
+                throw new Exception("\n\nNo release found with the " + Type.ToString() + " not contains " + NotContains);
+            }
+            else
+            {
+                if (NoOfReleasesWithSameVersion != 1)
+                {
+                    MultipleReleases = MultipleReleases.TrimStart(' ', ',');
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " not contains " + NotContains + ". Returning the latest release " + ReleaseID + ".");
+                }
+                return ReleaseID;
+            }
+        }
 
         //******************************** Private methods ********************************
 
