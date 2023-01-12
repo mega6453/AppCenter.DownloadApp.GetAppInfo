@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -616,6 +617,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
+            List<int> ReleasesList = new List<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 internalVersion = (string)textArray[i]["version"];
@@ -624,6 +626,7 @@ namespace AppCenterDownloadAppGetAppInfo
                     ReleaseID = (int)textArray[i]["id"];
                     NoOfReleasesWithSameVersion++;
                     MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                    ReleasesList.Add(ReleaseID);
                 }
             }
             if (ReleaseID == -1)
@@ -632,12 +635,15 @@ namespace AppCenterDownloadAppGetAppInfo
             }
             else
             {
+                ReleasesList.Sort();
+                int LastIndex = ReleasesList.Count - 1;
+                int LatestReleaseID = ReleasesList[LastIndex];
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the Build Number " + BuildNumber + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the Build Number " + BuildNumber + ". Returning the latest release " + LatestReleaseID + ".");
                 }
-                return ReleaseID;
+                return LatestReleaseID;
             }
         }
 
@@ -661,6 +667,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
+            List<int> ReleasesList = new List<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 internalShortVersion = (string)textArray[i]["short_version"];
@@ -670,6 +677,7 @@ namespace AppCenterDownloadAppGetAppInfo
                     ReleaseID = (int)textArray[i]["id"];
                     NoOfReleasesWithSameVersion++;
                     MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                    ReleasesList.Add(ReleaseID);
                 }
             }
             if (ReleaseID == -1)
@@ -678,12 +686,15 @@ namespace AppCenterDownloadAppGetAppInfo
             }
             else
             {
+                ReleasesList.Sort();
+                int LastIndex = ReleasesList.Count - 1;
+                int LatestReleaseID = ReleasesList[LastIndex];
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the ShortVersion " + ShortVersion + ", Build Number " + BuildNumber + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the ShortVersion " + ShortVersion + ", Build Number " + BuildNumber + ". Returning the latest release " + LatestReleaseID + ".");
                 }
-                return ReleaseID;
+                return LatestReleaseID;
             }
         }
 
@@ -704,6 +715,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
+            List<int> ReleasesList = new List<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 internalVersion = (string)textArray[i][Type.ToString()];
@@ -712,6 +724,7 @@ namespace AppCenterDownloadAppGetAppInfo
                     ReleaseID = (int)textArray[i]["id"];
                     NoOfReleasesWithSameVersion++;
                     MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                    ReleasesList.Add(ReleaseID);
                 }
             }
             if (ReleaseID == -1)
@@ -720,12 +733,15 @@ namespace AppCenterDownloadAppGetAppInfo
             }
             else
             {
+                ReleasesList.Sort();
+                int LastIndex = ReleasesList.Count - 1;
+                int LatestReleaseID = ReleasesList[LastIndex];
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " " + Version + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " " + Version + ". Returning the latest release " + LatestReleaseID + ".");
                 }
-                return ReleaseID;
+                return LatestReleaseID;
             }
         }
 
@@ -747,6 +763,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
+            List<int> ReleasesList = new List<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 internalVersion = (string)textArray[i][internalVersionType];
@@ -755,6 +772,7 @@ namespace AppCenterDownloadAppGetAppInfo
                     ReleaseID = (int)textArray[i]["id"];
                     NoOfReleasesWithSameVersion++;
                     MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                    ReleasesList.Add(ReleaseID);
                 }
             }
             if (ReleaseID == -1)
@@ -763,12 +781,15 @@ namespace AppCenterDownloadAppGetAppInfo
             }
             else
             {
+                ReleasesList.Sort();
+                int LastIndex = ReleasesList.Count - 1;
+                int LatestReleaseID = ReleasesList[LastIndex];
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " contains " + Contains + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " contains " + Contains + ". Returning the latest release " + LatestReleaseID + ".");
                 }
-                return ReleaseID;
+                return LatestReleaseID;
             }
         }
 
@@ -790,6 +811,7 @@ namespace AppCenterDownloadAppGetAppInfo
             int ReleaseID = -1;
             int NoOfReleasesWithSameVersion = 0;
             string MultipleReleases = null;
+            List<int> ReleasesList = new List<int>();
             for (int i = count - 1; i >= 0; i--)
             {
                 internalVersion = (string)textArray[i][internalVersionType];
@@ -798,6 +820,7 @@ namespace AppCenterDownloadAppGetAppInfo
                     ReleaseID = (int)textArray[i]["id"];
                     NoOfReleasesWithSameVersion++;
                     MultipleReleases = MultipleReleases + " , " + ReleaseID.ToString();
+                    ReleasesList.Add(ReleaseID);
                 }
             }
             if (ReleaseID == -1)
@@ -806,12 +829,15 @@ namespace AppCenterDownloadAppGetAppInfo
             }
             else
             {
+                ReleasesList.Sort();
+                int LastIndex = ReleasesList.Count-1;
+                int LatestReleaseID = ReleasesList[LastIndex];
                 if (NoOfReleasesWithSameVersion != 1)
                 {
                     MultipleReleases = MultipleReleases.TrimStart(' ', ',');
-                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " not contains " + NotContains + ". Returning the latest release " + ReleaseID + ".");
+                    Console.WriteLine("FYI: There are " + NoOfReleasesWithSameVersion + " releases ( " + MultipleReleases + " ) found with the " + Type.ToString() + " not contains " + NotContains + ". Returning the latest release " + LatestReleaseID + ".");
                 }
-                return ReleaseID;
+                return LatestReleaseID;
             }
         }
 

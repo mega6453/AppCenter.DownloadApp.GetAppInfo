@@ -51,7 +51,7 @@ namespace UnitTest
 
             //System.Console.WriteLine(app.GetReleaseIDByContains("Denali-TEST", VersionType.short_version, "HomeScreen"));
 
-            //System.Console.WriteLine(app.GetReleaseIDByNotContains("Denali-TEST", VersionType.short_version,"UI"));
+            //System.Console.WriteLine(app.GetReleaseIDByNotContains("Denali-TEST", VersionType.short_version, "UI"));
 
 
         }
