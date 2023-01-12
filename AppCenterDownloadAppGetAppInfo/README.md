@@ -47,8 +47,6 @@ This will download the application in to the specified location and will return 
 ## Available Methods
 No much information added here about the methods since all the methods are having description and parameter info which will be displayed while using the methods.
 
-<img src="https://user-images.githubusercontent.com/50325649/87872324-0eb23b00-c9d5-11ea-8dac-2bcafb94cb3b.png" width="820" height="80" title="MethodDesc" alt="MethodDesc">
-
 ```
 DownloadApplication() (+ 3 overloads)
 GetAllDeviceDetails()
