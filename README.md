@@ -80,6 +80,11 @@ More methods will be added in the future releases.
 
 * [**Meganathan C**](https://mega6453.carrd.co)
 
+## Want to add features or fix things?
+* Clone the Repo
+* Make changes
+* Create a pull request
+
 ## License
 
 This project is licensed under the [MIT License](https://licenses.nuget.org/MIT)
